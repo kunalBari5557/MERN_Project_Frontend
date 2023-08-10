@@ -13,7 +13,7 @@ const ViewProductDetails = () => {
           <ul className="breadcrumb">
             <li className="active">
               <a href="##">
-                <h5 className="mb-0 text-white">Details Users</h5>
+                <h5 className="mb-0 text-white">Details Products</h5>
               </a>
             </li>
             <li>
