@@ -51,18 +51,6 @@ const UsersManagement = () => {
       <div className="layout-spacing w-100">
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div className="widget widget-chart-one my-4">
-              {/* <div className="widget-heading">
-                      <h5>Candidates</h5>
-                  </div> */}
-
-              <div className="widget-content">
-                {/* <AdminLineCharts data={employerMonthChart} /> */}
-              </div>
-            </div>
-          </div>
-
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div className="widget widget-table-two">
               <div className="widget-heading">
                 <h5>Users Management</h5>

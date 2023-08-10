@@ -9,6 +9,8 @@ const AdminDashboard = () => {
   const Navigate = useNavigate();
   const [productList, setProductList] = useState<any>([]);
   const [usersList, setUsersList] = useState<any>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchValue, setSearchValue] = useState("");
   const productListLength = productList.length;
   const usersListLength = usersList.length;
 
@@ -16,16 +18,19 @@ const AdminDashboard = () => {
   const [jobCount, setJobCount] = useState(0);
   const [appliedJobCount, setAppliedJobCount] = useState(0);
 
-  const productListData = () => {
+  const productListData = (page: any, searchValue = "") => {
     axios
-      .get(`${process.env.REACT_APP_URL}/products`, {
-        headers: { token: `${localStorage.getItem("Token")}` },
-      })
+      .get(
+        `${process.env.REACT_APP_URL}/admin/get?page=${page}&search=${searchValue}`,
+        {
+          headers: { token: `${localStorage.getItem("Token")}` },
+        }
+      )
       .then((res) => {
         console.log(res);
 
         if (res.status === 200) {
-          setProductList(res.data);
+          setProductList(res.data.data);
         }
       })
       .catch((err) => {
@@ -61,7 +66,7 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    productListData();
+    productListData(currentPage, searchValue);
     usersListData();
   }, []);
 
@@ -70,7 +75,7 @@ const AdminDashboard = () => {
       <Toaster position="top-center" reverseOrder={false} />
       <div className="layout-spacing w-100">
         <div className="row">
-        <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+          <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
             <a href="/admin/users">
               <div className="widget widget-one_hybrid widget-followers mt-4">
                 <div className="widget-heading">
