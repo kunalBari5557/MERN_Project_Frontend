@@ -27,33 +27,41 @@ const AddProduct = () => {
     rate_id: "1",
   });
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const handleFileChange = (e: any) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+    }
+  };
   const users = useFormik({
     initialValues,
     enableReinitialize: true,
     validationSchema: ProductSchema,
 
     onSubmit: (values: Employer, action: any) => {
-      let formData = new FormData();
-      formData.append("title", values.title); //append the values with key, value pair
-      formData.append("price", values.price); //append the values with key, value pair
-      formData.append("description", values.description);
-      formData.append("category", values.category);
-      formData.append("image", values.image);
-      formData.append("rate_id", values.rate_id);
+      if (selectedFile) {
+        let formData = new FormData();
+        formData.append("title", values.title); //append the values with key, value pair
+        formData.append("price", values.price); //append the values with key, value pair
+        formData.append("description", values.description);
+        formData.append("category", values.category);
+        formData.append("image", values.image);
+        formData.append("rate_id", values.rate_id);
 
-      axios
-        .post(`${process.env.REACT_APP_URL}/admin/add`, formData, {
-          headers: { token: `${localStorage.getItem("Token")}` },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            Navigate("/admin/product", { state: res.data.msg });
-          }
-        })
-        .catch((err) => {
-          toast.error(err.response.data.msg);
-          // Navigate('/admin/users');
-        });
+        axios
+          .post(`${process.env.REACT_APP_URL}/admin/add`, formData, {
+            headers: { token: `${localStorage.getItem("Token")}` },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              Navigate("/admin/product", { state: res.data.msg });
+            }
+          })
+          .catch((err) => {
+            toast.error(err.response.data.msg);
+            // Navigate('/admin/users');
+          });
+      }
     },
   });
 
@@ -202,16 +210,11 @@ const AddProduct = () => {
                         type="file"
                         className="custom-file-container__custom-file__custom-file-input"
                         name="image"
-                        onChange={(e) =>
-                          users.setFieldValue(
-                            "image",
-                            e.target.files && e.target.files[0]
-                          )
-                        }
+                        onChange={handleFileChange}
                         accept="image/*"
                       />
                       <span className="custom-file-container__custom-file__custom-file-control outline-none">
-                        Choose Profile...
+                        {selectedFile ? selectedFile.name : "Choose Profile..."}
                         <span className="custom-file-container__custom-file__custom-file-control__button">
                           {" "}
                           Browse{" "}
@@ -219,6 +222,7 @@ const AddProduct = () => {
                       </span>
                     </label>
                   </div>
+
                   {users.errors.image && users.touched.image ? (
                     <h6 className="text-danger mt-2 ml-1">
                       {users.errors.image}

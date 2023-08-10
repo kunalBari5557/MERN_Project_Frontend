@@ -19,51 +19,51 @@ const ProductListEdit = () => {
   const stateData = location.state;
   const Navigate = useNavigate();
 
-  // const [initialValues, setInitialValues] = useState<Employer>({
-  //   title: stateData.title,
-  //   price: stateData.price,
-  //   description: stateData.description,
-  //   category: stateData.category,
-  //   image: stateData.image,
-  //   rate_id: stateData.rate_id,
-  // });
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const handleFileChange = (e: any) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+    }
+  };
 
   const users = useFormik<Employer>({
-    initialValues:{
-          title: stateData.title,
-    price: stateData.price,
-    description: stateData.description,
-    category: stateData.category,
-    image: stateData.image,
-    rate_id: stateData.rate_id,
+    initialValues: {
+      title: stateData.title,
+      price: stateData.price,
+      description: stateData.description,
+      category: stateData.category,
+      image: stateData.image,
+      rate_id: stateData.rate_id,
     },
     enableReinitialize: true,
     validationSchema: ProductUpdateSchema,
 
     onSubmit: (values: Employer, action: any) => {
-      let formData = new FormData();
-      formData.append("title", values.title); //append the values with key, value pair
-      formData.append("price", values.price); //append the values with key, value pair
-      formData.append("description", values.description);
-      formData.append("category", values.category);
-      formData.append("image", values.image);
-      formData.append("rate_id", values.rate_id);
+      if (selectedFile) {
+        let formData = new FormData();
+        formData.append("title", values.title); //append the values with key, value pair
+        formData.append("price", values.price); //append the values with key, value pair
+        formData.append("description", values.description);
+        formData.append("category", values.category);
+        formData.append("image", values.image);
+        formData.append("rate_id", values.rate_id);
 
-      axios
-        .put(
-          `${process.env.REACT_APP_URL}/admin/update/${stateData.id}`,
-          formData,
-          { headers: { token: `${localStorage.getItem("Token")}` } }
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            Navigate("/admin/product", { state: res.data.msg });
-          }
-        })
-        .catch((err) => {
-          toast.error(err.response.data.msg);
-          // Navigate('/admin/product');
-        });
+        axios
+          .put(
+            `${process.env.REACT_APP_URL}/admin/update/${stateData.id}`,
+            formData,
+            { headers: { token: `${localStorage.getItem("Token")}` } }
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              Navigate("/admin/product", { state: res.data.msg });
+            }
+          })
+          .catch((err) => {
+            toast.error(err.response.data.msg);
+            // Navigate('/admin/product');
+          });
+      }
     },
   });
 
@@ -186,17 +186,11 @@ const ProductListEdit = () => {
                         type="file"
                         className="custom-file-container__custom-file__custom-file-input"
                         name="image"
-                        onChange={(e) =>
-                          users.setFieldValue(
-                            "image",
-                            e.target.files && e.target.files[0]
-                          )
-                        }
-                        onBlur={users.handleBlur}
+                        onChange={handleFileChange}
                         accept="image/*"
                       />
                       <span className="custom-file-container__custom-file__custom-file-control outline-none">
-                        Choose Profile...
+                        {selectedFile ? selectedFile.name : "Choose Profile..."}
                         <span className="custom-file-container__custom-file__custom-file-control__button">
                           {" "}
                           Browse{" "}
