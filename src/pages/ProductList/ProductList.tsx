@@ -1,23 +1,28 @@
 import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import AdminDashboard from "../Dashboard";
 import { Toaster } from "react-hot-toast";
-// import AdminLineCharts from "../Componant"
+import CustomPagination from "../../Custom/Custom";
 
 const ProductList = () => {
   const Navigate = useNavigate();
   const [data, setData] = useState<any>([]);
   const [expandedItems, setExpandedItems] = useState<any>([]);
 
-  const ProductListData = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = data?.pagination?.totalPages;
+  const totalCount = data?.pagination?.totalCount;
+
+  const ProductListData = (page: any) => {
     axios
-      .get(`${process.env.REACT_APP_URL}/admin/get`, {
+      .get(`${process.env.REACT_APP_URL}/admin/get?page=${page}`, {
         headers: { token: `${localStorage.getItem("Token")}` },
       })
       .then((res) => {
+        console.log("data", res.data);
         if (res.status === 200) {
           setData(res.data);
         }
@@ -33,8 +38,8 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    ProductListData();
-  }, []);
+    ProductListData(currentPage);
+  }, [currentPage]);
 
   const toggleExpansion = (index: any) => {
     if (expandedItems.includes(index)) {
@@ -78,7 +83,7 @@ const ProductList = () => {
                 showConfirmButton: false,
                 timer: 2000,
               });
-              ProductListData();
+              ProductListData(currentPage);
             }
           })
           .catch((err) => {
@@ -86,6 +91,10 @@ const ProductList = () => {
           });
       }
     });
+  };
+
+  const handlePageChange = (pageNumber: any) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -153,7 +162,7 @@ const ProductList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {data.map((item: any, index: number) => (
+                      {data?.data?.map((item: any, index: number) => (
                         <tr key={index}>
                           <td>
                             <div className="td-content customer-name">
@@ -273,6 +282,12 @@ const ProductList = () => {
           </div>
         </div>
       </div>
+      <CustomPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        totalCount={totalCount}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };

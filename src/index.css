@@ -116,3 +116,51 @@ body::-webkit-scrollbar {
   right:0;
   font-weight: bold;
 }
+
+.custom-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+}
+
+.pagination-info {
+  flex: 1;
+  text-align: left;
+}
+
+.page-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.page-button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.page-button:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.page-button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination-left {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-right {
+  margin-left: auto;
+}

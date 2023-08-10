@@ -12,7 +12,7 @@ const AdminLayout = () =>{
     
                 <div id="content" className="main-content">
                   <div className="layout-px-spacing">
-                    <div className="row layout-top-spacing mx-md-1 mx-sm-0">
+                    <div className="row layout-top-spacing mx-md-1 mx-sm-0 justify-content-end">
                       <Outlet/>
                     </div>
                   </div>
