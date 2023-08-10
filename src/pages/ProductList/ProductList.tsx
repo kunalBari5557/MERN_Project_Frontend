@@ -45,7 +45,6 @@ const ProductList = () => {
 
   useEffect(() => {
     if(initialData){
-      console.log("called apiii")
         ProductListData(currentPage, searchValue);
     }else{
       setInitialdata(true)
@@ -54,6 +53,7 @@ const ProductList = () => {
 
   const handleSearch = (newSearchValue: any) => {
     setSearchValue(newSearchValue);
+    setCurrentPage(1); // Reset the current page to 1 when searching
   };
 
   //product details
