@@ -39,7 +39,6 @@ const ProductListEdit = () => {
     validationSchema: ProductUpdateSchema,
 
     onSubmit: (values: Employer, action: any) => {
-      if (selectedFile) {
         let formData = new FormData();
         formData.append("title", values.title); //append the values with key, value pair
         formData.append("price", values.price); //append the values with key, value pair
@@ -64,7 +63,6 @@ const ProductListEdit = () => {
             // Navigate('/admin/product');
           });
       }
-    },
   });
 
   return (
@@ -179,7 +177,7 @@ const ProductListEdit = () => {
                     </h6>
                   ) : null}
 
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label>Profile</label>
                     <label className="custom-file-container__custom-file mt-0">
                       <input
@@ -191,6 +189,32 @@ const ProductListEdit = () => {
                       />
                       <span className="custom-file-container__custom-file__custom-file-control outline-none">
                         {selectedFile ? selectedFile.name : "Choose Profile..."}
+                        <span className="custom-file-container__custom-file__custom-file-control__button">
+                          {" "}
+                          Browse{" "}
+                        </span>
+                      </span>
+                    </label>
+                  </div> */}
+
+<div className="form-group">
+                    <label>Profile</label>
+                    <label className="custom-file-container__custom-file mt-0">
+                      <input
+                        type="file"
+                        className="custom-file-container__custom-file__custom-file-input"
+                        name="profile"
+                        onChange={(e) =>
+                          users.setFieldValue(
+                            "image",
+                            e.target.files && e.target.files[0]
+                          )
+                        }
+                        onBlur={users.handleBlur}
+                        accept="image/*"
+                      />
+                      <span className="custom-file-container__custom-file__custom-file-control outline-none">
+                        Choose Profile...
                         <span className="custom-file-container__custom-file__custom-file-control__button">
                           {" "}
                           Browse{" "}

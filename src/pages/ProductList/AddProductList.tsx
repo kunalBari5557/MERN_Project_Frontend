@@ -39,7 +39,6 @@ const AddProduct = () => {
     validationSchema: ProductSchema,
 
     onSubmit: (values: Employer, action: any) => {
-      if (selectedFile) {
         let formData = new FormData();
         formData.append("title", values.title); //append the values with key, value pair
         formData.append("price", values.price); //append the values with key, value pair
@@ -62,7 +61,6 @@ const AddProduct = () => {
             // Navigate('/admin/users');
           });
       }
-    },
   });
 
   return (
@@ -177,7 +175,7 @@ const AddProduct = () => {
                     </h6>
                   ) : null}
 
-                  {/* <div className="form-group">
+                  <div className="form-group">
                     <label>Profile</label>
                     <label className="custom-file-container__custom-file mt-0">
                       <input
@@ -186,7 +184,7 @@ const AddProduct = () => {
                         name="profile"
                         onChange={(e) =>
                           users.setFieldValue(
-                            "profile",
+                            "image",
                             e.target.files && e.target.files[0]
                           )
                         }
@@ -201,9 +199,9 @@ const AddProduct = () => {
                         </span>
                       </span>
                     </label>
-                  </div> */}
+                  </div>
 
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label>Profile</label>
                     <label className="custom-file-container__custom-file mt-0">
                       <input
@@ -221,7 +219,7 @@ const AddProduct = () => {
                         </span>
                       </span>
                     </label>
-                  </div>
+                  </div> */}
 
                   {users.errors.image && users.touched.image ? (
                     <h6 className="text-danger mt-2 ml-1">
