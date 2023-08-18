@@ -74,7 +74,7 @@ const ViewProductDetails = () => {
                   </div>
 
                   <div className="form-group">
-                    <label>{stateData.rate_id}</label>
+                    <label>{stateData.rating.id}</label>
                   </div>
                 </form>
               </div>

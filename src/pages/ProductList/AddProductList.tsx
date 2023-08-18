@@ -24,7 +24,7 @@ const AddProduct = () => {
     description: "",
     category: "",
     image: "",
-    rate_id: "1",
+    rate_id: "",
   });
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -48,7 +48,7 @@ const AddProduct = () => {
         formData.append("rate_id", values.rate_id);
 
         axios
-          .post(`${process.env.REACT_APP_URL}/admin/add`, formData, {
+          .post(`${process.env.REACT_APP_URL}/admin/product/add`, formData, {
             headers: { token: `${localStorage.getItem("Token")}` },
           })
           .then((res) => {

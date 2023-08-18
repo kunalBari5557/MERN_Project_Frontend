@@ -8,20 +8,46 @@ import { useNavigate } from "react-router-dom";
 const AdminDashboard = () => {
   const Navigate = useNavigate();
   const [productList, setProductList] = useState<any>([]);
+  const [userList, setUserList] = useState<any>([]);
   const [usersList, setUsersList] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const productListLength = productList.length;
-  const usersListLength = usersList.length;
+  const usersListLength = userList.length;
 
   const [candidateCount, setCandidateCount] = useState(0);
   const [jobCount, setJobCount] = useState(0);
   const [appliedJobCount, setAppliedJobCount] = useState(0);
 
+  const userListData = (page: any, searchValue = "") => {
+    axios
+      .get(
+        `${process.env.REACT_APP_URL}/admin/user/get?page=${page}&search=${searchValue}`,
+        {
+          headers: { token: `${localStorage.getItem("Token")}` },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+
+        if (res.status === 200) {
+          setUserList(res.data.data);
+        }
+      })
+      .catch((err) => {
+        if (err.response.data.msg === "Unauthorized!") {
+          localStorage.clear();
+          Navigate("/admin/login");
+        } else {
+          //   setApierror1(err.response.data.msg);
+        }
+      });
+  };
+
   const productListData = (page: any, searchValue = "") => {
     axios
       .get(
-        `${process.env.REACT_APP_URL}/admin/get?page=${page}&search=${searchValue}`,
+        `${process.env.REACT_APP_URL}/admin/product/get?page=${page}&search=${searchValue}`,
         {
           headers: { token: `${localStorage.getItem("Token")}` },
         }
@@ -43,31 +69,10 @@ const AdminDashboard = () => {
       });
   };
 
-  const usersListData = () => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/users`, {
-        headers: { token: `${localStorage.getItem("Token")}` },
-      })
-      .then((res) => {
-        console.log(res);
-
-        if (res.status === 200) {
-          setUsersList(res.data);
-        }
-      })
-      .catch((err) => {
-        if (err.response.data.msg === "Unauthorized!") {
-          localStorage.clear();
-          Navigate("/admin/login");
-        } else {
-          //   setApierror1(err.response.data.msg);
-        }
-      });
-  };
 
   useEffect(() => {
     productListData(currentPage, searchValue);
-    usersListData();
+    userListData(currentPage, searchValue);
   }, []);
 
   return (

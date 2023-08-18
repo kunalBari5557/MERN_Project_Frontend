@@ -23,7 +23,7 @@ const ProductList = () => {
   const ProductListData = (page: any, searchValue = "") => {
     axios
       .get(
-        `${process.env.REACT_APP_URL}/admin/get?page=${page}&search=${searchValue}`,
+        `${process.env.REACT_APP_URL}/admin/product/get?page=${page}&search=${searchValue}`,
         {
           headers: { token: `${localStorage.getItem("Token")}` },
         }
@@ -77,7 +77,7 @@ const ProductList = () => {
     }).then((result: any) => {
       if (result.isConfirmed === true) {
         axios
-          .delete(`${process.env.REACT_APP_URL}/admin/delete/${e}`, {
+          .delete(`${process.env.REACT_APP_URL}/admin/product/delete/${e}`, {
             headers: { token: `${localStorage.getItem("Token")}` },
           })
           .then((res) => {

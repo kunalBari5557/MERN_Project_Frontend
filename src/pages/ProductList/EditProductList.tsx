@@ -33,7 +33,7 @@ const ProductListEdit = () => {
       description: stateData.description,
       category: stateData.category,
       image: stateData.image,
-      rate_id: stateData.rate_id,
+      rate_id: stateData.rating.id,
     },
     enableReinitialize: true,
     validationSchema: ProductUpdateSchema,
@@ -49,7 +49,7 @@ const ProductListEdit = () => {
 
         axios
           .put(
-            `${process.env.REACT_APP_URL}/admin/update/${stateData.id}`,
+            `${process.env.REACT_APP_URL}/admin/product/update/${stateData.id}`,
             formData,
             { headers: { token: `${localStorage.getItem("Token")}` } }
           )

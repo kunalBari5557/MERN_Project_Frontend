@@ -11,6 +11,7 @@ import Page_Not_Found from '../Components/404_page';
 import ProductListEdit from '../pages/ProductList/EditProductList';
 import ViewProductDetails from '../pages/ProductList/ViewProductDetails';
 import AddProduct from '../pages/ProductList/AddProductList';
+import UserList from '../pages/UsersManagement/UsersManagement';
 const Admin_Routes = () => {
 
     return (
@@ -27,6 +28,7 @@ const Admin_Routes = () => {
               <Route path="product/edit" element={<ProductListEdit />} />
               <Route path="product/details" element={<ViewProductDetails />} />
               <Route path="product/add" element={<AddProduct />} />
+              <Route path="user" element={<UserList />} />
             </Route>
           </Route>
           
