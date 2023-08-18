@@ -57,7 +57,7 @@ const UserListEdit = () => {
                 );
 
                 if (response.status === 200) {
-                    Navigate("/admin/user", { state: response.data.msg });
+                    Navigate("/admin/users", { state: response.data.msg });
                 }
             } catch (err: any) {
                 toast.error(err.response.data.msg);

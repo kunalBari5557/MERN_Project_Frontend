@@ -31,7 +31,7 @@ const Admin_Routes = () => {
               <Route path="product/edit" element={<ProductListEdit />} />
               <Route path="product/details" element={<ViewProductDetails />} />
               <Route path="product/add" element={<AddProduct />} />
-              <Route path="user" element={<UserList />} />
+              <Route path="users" element={<UserList />} />
               <Route path="user/details" element={<ViewUserDetails />} />
               <Route path="user/edit" element={<UserListEdit />} />
               <Route path="user/add" element={<UserListAdd />} />
