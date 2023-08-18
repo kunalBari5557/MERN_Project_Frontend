@@ -58,12 +58,12 @@ const UserList = () => {
 
   //product details
   const HandleShow = (e: any) => {
-    Navigate("/admin/product/details", { state: e });
+    Navigate("/admin/user/details", { state: e });
   };
 
   //edit product
   const HandleEdit = (e: any) => {
-    Navigate("/admin/product/edit", { state: e });
+    Navigate("/admin/user/edit", { state: e });
   };
 
   //delete product
@@ -122,7 +122,7 @@ const UserList = () => {
             <div className="d-flex">
               <h5
                 className="text-white mb-0"
-                onClick={() => Navigate("/admin/product/add")}
+                onClick={() => Navigate("/admin/user/add")}
               >
                 Add User
               </h5>

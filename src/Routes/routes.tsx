@@ -12,6 +12,9 @@ import ProductListEdit from '../pages/ProductList/EditProductList';
 import ViewProductDetails from '../pages/ProductList/ViewProductDetails';
 import AddProduct from '../pages/ProductList/AddProductList';
 import UserList from '../pages/UsersManagement/UsersManagement';
+import ViewUserDetails from '../pages/UsersManagement/ViewUserDetails';
+import UserListEdit from '../pages/UsersManagement/EditUserList';
+import UserListAdd from '../pages/UsersManagement/AddUserList';
 const Admin_Routes = () => {
 
     return (
@@ -29,6 +32,9 @@ const Admin_Routes = () => {
               <Route path="product/details" element={<ViewProductDetails />} />
               <Route path="product/add" element={<AddProduct />} />
               <Route path="user" element={<UserList />} />
+              <Route path="user/details" element={<ViewUserDetails />} />
+              <Route path="user/edit" element={<UserListEdit />} />
+              <Route path="user/add" element={<UserListAdd />} />
             </Route>
           </Route>
           

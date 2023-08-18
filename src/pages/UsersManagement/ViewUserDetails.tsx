@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ViewProductDetails = () => {
+const ViewUserDetails = () => {
   const location = useLocation();
   const stateData = location.state;
 
@@ -13,7 +13,7 @@ const ViewProductDetails = () => {
           <ul className="breadcrumb">
             <li className="active">
               <a href="##">
-                <h5 className="mb-0 text-white">Products Details</h5>
+                <h5 className="mb-0 text-white">Users Details</h5>
               </a>
             </li>
             <li>
@@ -27,54 +27,54 @@ const ViewProductDetails = () => {
               <div className="col-lg-4 col-4">
                 <form>
                   <div className="form-group">
-                    <label>Title</label>
+                    <label>Firstname</label>
                   </div>
 
                   <div className="form-group">
-                    <label>Price</label>
+                    <label>Lastname</label>
                   </div>
 
                   <div className="form-group">
-                    <label>Description</label>
+                    <label>Email</label>
                   </div>
 
                   <div className="form-group">
-                    <label>Category</label>
+                    <label>Username</label>
                   </div>
 
                   <div className="form-group">
-                    <label>Image</label>
+                    <label>Phone</label>
                   </div>
 
                   <div className="form-group">
-                    <label>Rate_Id</label>
+                    <label>Password</label>
                   </div>
                 </form>
               </div>
               <div className="col-lg-4 col-4">
                 <form>
                   <div className="form-group">
-                    <label>{stateData.title}</label>
+                    <label>{stateData.name.firstname}</label>
                   </div>
 
                   <div className="form-group">
-                    <label>{stateData.price}</label>
+                    <label>{stateData.name.lastname}</label>
                   </div>
 
                   <div className="form-group">
-                    <label>{stateData.description}</label>
+                    <label>{stateData.email}</label>
                   </div>
 
                   <div className="form-group">
-                    <label>{stateData.category}</label>
+                    <label>{stateData.username}</label>
                   </div>
 
                   <div className="form-group">
-                    <label>{stateData.image}</label>
+                    <label>{stateData.phone}</label>
                   </div>
 
                   <div className="form-group">
-                    <label>{stateData.rating.id}</label>
+                    <label>{stateData.password}</label>
                   </div>
                 </form>
               </div>
@@ -86,4 +86,4 @@ const ViewProductDetails = () => {
   );
 };
 
-export default ViewProductDetails;
+export default ViewUserDetails;
