@@ -31,6 +31,10 @@ const AdminLogin = () => {
   }
 
   const [initialValues] = useState<Login>({ email: "", password: "" });
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const login = useFormik({
     initialValues,
@@ -147,7 +151,7 @@ const AdminLogin = () => {
                     <input
                       id="password"
                       name="password"
-                      type="password"
+                      type={passwordVisible ? "text" : "password"}
                       className="form-control"
                       value={login.values.password}
                       onChange={login.handleChange}
@@ -166,6 +170,8 @@ const AdminLogin = () => {
                       strokeLinejoin="round"
                       id="toggle-password"
                       className="feather feather-eye"
+                      onClick={togglePasswordVisibility}
+                      style={{ cursor: "pointer" }}
                     >
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                       <circle cx="12" cy="12" r="3"></circle>
