@@ -7,31 +7,21 @@ import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
   const Navigate = useNavigate();
-  const [productList, setProductList] = useState<any>([]);
-  const [userList, setUserList] = useState<any>([]);
-  const [usersList, setUsersList] = useState<any>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchValue, setSearchValue] = useState("");
-  const productListLength = productList.length;
-  const usersListLength = userList.length;
-
-  const [candidateCount, setCandidateCount] = useState(0);
+  const [dashboardData, setDashboardData] = useState<any>([]);
   const [jobCount, setJobCount] = useState(0);
   const [appliedJobCount, setAppliedJobCount] = useState(0);
 
-  const userListData = (page: any, searchValue = "") => {
+  const dashboardListData = () => {
     axios
       .get(
-        `${process.env.REACT_APP_URL}/admin/user/get?page=${page}&search=${searchValue}`,
+        `${process.env.REACT_APP_URL}/admin/dashboard/get`,
         {
           headers: { token: `${localStorage.getItem("Token")}` },
         }
       )
       .then((res) => {
-        console.log(res);
-
         if (res.status === 200) {
-          setUserList(res.data.data);
+          setDashboardData(res.data?.data);
         }
       })
       .catch((err) => {
@@ -43,36 +33,9 @@ const AdminDashboard = () => {
         }
       });
   };
-
-  const productListData = (page: any, searchValue = "") => {
-    axios
-      .get(
-        `${process.env.REACT_APP_URL}/admin/product/get?page=${page}&search=${searchValue}`,
-        {
-          headers: { token: `${localStorage.getItem("Token")}` },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-
-        if (res.status === 200) {
-          setProductList(res.data.data);
-        }
-      })
-      .catch((err) => {
-        if (err.response.data.msg === "Unauthorized!") {
-          localStorage.clear();
-          Navigate("/admin/login");
-        } else {
-          //   setApierror1(err.response.data.msg);
-        }
-      });
-  };
-
 
   useEffect(() => {
-    productListData(currentPage, searchValue);
-    userListData(currentPage, searchValue);
+    dashboardListData();
   }, []);
 
   return (
@@ -103,7 +66,7 @@ const AdminDashboard = () => {
                       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
                   </div>
-                  <p className="w-value">{usersListLength}</p>
+                  <p className="w-value">{dashboardData?.userCount}</p>
                   <h5>Users</h5>
                 </div>
               </div>
@@ -131,7 +94,7 @@ const AdminDashboard = () => {
                       <polyline points="17 11 19 13 23 9"></polyline>
                     </svg>
                   </div>
-                  <p className="w-value">{productListLength}</p>
+                  <p className="w-value">{dashboardData?.productCount}</p>
                   <h5>Products</h5>
                 </div>
               </div>
