@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 const ViewUserDetails = () => {
   const location = useLocation();
   const stateData = location.state;
@@ -86,21 +87,9 @@ const ViewUserDetails = () => {
                       </span>
                       <span className="eye-icon" onClick={togglePasswordVisibility}>
                         {showPassword ? (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 2C6.48 2 2 8.48 2 12s4.48 10 10 10s10-4.48 10-10s-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm-1-6h2v2h-2zm1-11.75c-2.89 0-5.49 1.47-7 3.69c0.43 0.63 2.18 3.31 7 5.31c4.82-2 6.57-4.68 7-5.31c-1.51-2.22-4.11-3.69-7-3.69zm0 5c-1.66 0-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3s-1.34 3-3 3z" />
-                          </svg>
+                          <RemoveRedEyeIcon/>
                         ) : (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 7.35l-1.53 1.53l1.42 1.42L12 10.18zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10s-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z" />            </svg>
+                          <VisibilityOffIcon/>
                         )}
                       </span>
                     </label>
