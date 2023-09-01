@@ -124,7 +124,7 @@ const UserList = () => {
                 className="text-white mb-0"
                 onClick={() => Navigate("/admin/user/add")}
               >
-                Add User
+                Add User 
               </h5>
             </div>
           </button>
