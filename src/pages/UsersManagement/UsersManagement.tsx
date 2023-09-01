@@ -260,9 +260,13 @@ const UserList = () => {
                           );
                         })
                       ) : (
-                        <h5 style={{ marginLeft: "45rem" }}>
-                          <b>No Record Found</b>
-                        </h5>
+                        <tr>
+                        <td colSpan={6} className="no-record">
+                          <h5>
+                            <b>No Record Found</b>
+                          </h5>
+                        </td>
+                      </tr>
                       )}
                     </tbody>
                   </table>
