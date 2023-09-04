@@ -85,7 +85,7 @@ const ViewUserDetails = () => {
                       <span className="password-text">
                         {showPassword ? stateData.password : "••••••••••"}
                       </span>
-                      <span className="eye-icon" onClick={togglePasswordVisibility}>
+                      <span className="eye-icon" style={{marginLeft:"1rem"}} onClick={togglePasswordVisibility}>
                         {showPassword ? (
                           <RemoveRedEyeIcon/>
                         ) : (
