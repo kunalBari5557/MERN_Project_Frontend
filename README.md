@@ -11,6 +11,9 @@ User Module with all crud operation with creating api
 Dynamic listing with creating node js api backend 
 ![Screenshot (142)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/3fcda558-0c86-458d-af95-e5f1b2421bdd)
 
+Pagination
+![Screenshot_4](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/ffadb5d4-398c-4c76-b73d-14331745cc71)
+
 User Details View with password hide and show
 ![Screenshot (145)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/0c6e93cc-ba7c-4ab2-8c72-42ec348b2d80)
 ![Screenshot (146)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/c94c4219-3f7a-4069-bbce-d12823ee08b9)
@@ -28,3 +31,4 @@ Product module
 
 validations using yup validation and use formik library
 ![Screenshot (144)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/360714a5-8098-427b-9153-44231c3534f0)
+
