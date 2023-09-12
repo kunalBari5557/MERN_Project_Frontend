@@ -65,7 +65,7 @@ const UserListAdd = () => {
                         <Toaster position="top-center" reverseOrder={false} />
                         <li className="active">
                             <a href="##">
-                                <h5 className="mb-0 text-white">Add Products</h5>
+                                <h5 className="mb-0 text-white">Add User</h5>
                             </a>
                         </li>
                         <li>
