@@ -8,6 +8,10 @@ Login Dashboard
 User Module with all crud operation with creating api
 ![Screenshot (140)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/6d6d836f-368e-469d-99e0-a3a291ace0ae)
 
+
+Dynamic add api with creating node js api backend 
+![Screenshot (152)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/ea2cde63-55ae-4b46-a082-ab498eefc3f2)
+
 Dynamic listing with creating node js api backend 
 ![Screenshot (142)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/3fcda558-0c86-458d-af95-e5f1b2421bdd)
 
@@ -34,4 +38,3 @@ Product module
 
 validations using yup validation and use formik library
 ![Screenshot (144)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/360714a5-8098-427b-9153-44231c3534f0)
-
