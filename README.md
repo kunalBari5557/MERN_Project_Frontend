@@ -18,6 +18,9 @@ User Details View with password hide and show
 ![Screenshot (145)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/0c6e93cc-ba7c-4ab2-8c72-42ec348b2d80)
 ![Screenshot (146)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/c94c4219-3f7a-4069-bbce-d12823ee08b9)
 
+Create Edit api and user able to edit record from here 
+![Screenshot (151)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/7b348117-706e-447f-a406-58b59498d93e)
+
 Create Delete api and user able to delete record from here using popup message
 ![Screenshot (149)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/cd4df614-947d-49ed-a433-b37b95008259)
 ![Screenshot_2](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/d9d43bcc-372d-49e6-b61d-42c479f10d85)
