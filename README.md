@@ -12,3 +12,6 @@ User Module
 ![Screenshot (142)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/3fcda558-0c86-458d-af95-e5f1b2421bdd)
 ![Screenshot (145)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/0c6e93cc-ba7c-4ab2-8c72-42ec348b2d80)
 ![Screenshot (146)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/c94c4219-3f7a-4069-bbce-d12823ee08b9)
+![Screenshot (149)](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/cd4df614-947d-49ed-a433-b37b95008259)
+![Screenshot_2](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/d9d43bcc-372d-49e6-b61d-42c479f10d85)
+![Screenshot_1](https://github.com/kunalBari5557/MERN_Project_Frontend/assets/96560938/69307fbe-0f82-44c5-9c16-4f85df0abe33)
